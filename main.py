@@ -21,7 +21,8 @@ group by gender;
 '''
 query_3 = '''
 select kdrama_name, number_of_episodes * episode_run_time as duration
-from kdramas;
+from kdramas
+where airing_date >= '2022-01-01';
 '''
 
 conn = psycopg2.connect(user=username, password=password, dbname=database, host=host, port=port)
@@ -45,6 +46,6 @@ with conn:
 
     cur.execute(query_3)
 
-    print('\nЗагальна тривалість дорам:')
+    print('\nЗагальна тривалість дорам, які вийшли у 2022 році:')
     for row in cur:
         print(f'Kdrama name: "{row[0]}"; duration: {row[1]}')
