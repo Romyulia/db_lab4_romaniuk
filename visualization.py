@@ -22,7 +22,8 @@ group by gender;
 '''
 query_3 = '''
 select kdrama_name, number_of_episodes * episode_run_time as duration
-from kdramas;
+from kdramas
+where airing_date >= '2022-01-01';
 '''
 
 conn = psycopg2.connect(user=username, password=password, dbname=database, host=host, port=port)
@@ -79,7 +80,7 @@ with conn:
     bar2_ax.set_xticklabels(kdrama)
     bar2_ax.set_xlabel('Kdrama name')
     bar2_ax.set_ylabel('Duration')
-    bar2_ax.set_title('Загальна тривалість дорам')
+    bar2_ax.set_title('Загальна тривалість дорам, які вийшли у 2022 році')
 
 mng = plt.get_current_fig_manager()
 
