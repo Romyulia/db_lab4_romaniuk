@@ -15,4 +15,5 @@ group by gender;
 
 -- Загальна тривалість дорам (стовпчикова діаграма)
 select kdrama_name, number_of_episodes * episode_run_time as duration
-from kdramas;
+from kdramas
+where airing_date >= '2022-01-01';
